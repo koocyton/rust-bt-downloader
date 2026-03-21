@@ -1,0 +1,40 @@
+[package]
+name = "rust-download"
+version = "0.1.0"
+edition = "2021"
+description = "A powerful download manager with BT support, inspired by IDM"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# HTTP client
+reqwest = { version = "0.12", features = ["stream"] }
+
+# BitTorrent
+librqbit = "8"
+
+# Native GUI
+iced = { version = "0.13", features = ["tokio"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Utilities
+url = "2"
+bytes = "1"
+futures = "0.3"
+chrono = { version = "0.4", features = ["serde"] }
+dirs = "6"
+uuid = { version = "1", features = ["v4"] }
+anyhow = "1"
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+sha1 = "0.10"
+hex = "0.4"
+urlencoding = "2"
+tokio-util = "0.7"
+open = "5"
+rfd = "0.15"
