@@ -37,6 +37,18 @@ fn get_font_paths() -> Vec<PathBuf> {
         if let Some(dir) = exe.parent() {
             paths.push(dir.join("assets").join("NotoSansSC-Regular.ttf"));
             paths.push(dir.join("NotoSansSC-Regular.ttf"));
+            // macOS .app: Contents/MacOS/app -> Contents/Resources/assets/
+            #[cfg(target_os = "macos")]
+            if dir.file_name().and_then(|n| n.to_str()) == Some("MacOS") {
+                if let Some(contents) = dir.parent() {
+                    paths.push(
+                        contents
+                            .join("Resources")
+                            .join("assets")
+                            .join("NotoSansSC-Regular.ttf"),
+                    );
+                }
+            }
         }
     }
 
